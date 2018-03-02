@@ -1,3 +1,6 @@
+//Edited from official repo, not safe for use as IRI on mainnet/production testnet as this code
+//does *NOT* verify snapshots.
+
 package com.iota.iri;
 import com.iota.iri.controllers.MilestoneViewModel;
 import com.iota.iri.controllers.StateDiffViewModel;
@@ -35,13 +38,6 @@ public class Snapshot {
     public final ReadWriteLock rwlock = new ReentrantReadWriteLock();
 
     static {
-
-        /**
-	*remove snapshot verification for private testnet 
-	*if (!SignedFiles.isFileSignatureValid("/Snapshot.txt", "/Snapshot.sig", SNAPSHOT_PUBKEY, SNAPSHOT_PUBKEY_DEPTH, SNAPSHOT_INDEX)) {
-        *    throw new RuntimeException("Snapshot signature failed.");
-        *}
-	*/
 
         InputStream in = Snapshot.class.getResourceAsStream("/Snapshot.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));

@@ -36,9 +36,12 @@ public class Snapshot {
 
     static {
 
-        if (!SignedFiles.isFileSignatureValid("/Snapshot.txt", "/Snapshot.sig", SNAPSHOT_PUBKEY, SNAPSHOT_PUBKEY_DEPTH, SNAPSHOT_INDEX)) {
-            throw new RuntimeException("Snapshot signature failed.");
-        }
+        /**
+	*remove snapshot verification for private testnet 
+	*if (!SignedFiles.isFileSignatureValid("/Snapshot.txt", "/Snapshot.sig", SNAPSHOT_PUBKEY, SNAPSHOT_PUBKEY_DEPTH, SNAPSHOT_INDEX)) {
+        *    throw new RuntimeException("Snapshot signature failed.");
+        *}
+	*/
 
         InputStream in = Snapshot.class.getResourceAsStream("/Snapshot.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
